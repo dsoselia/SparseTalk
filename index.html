@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SparseTalk: Sparsifying 3D Gaussian Language Fields for Efficient 3D Visual Question Answering. Research by Davit Soselia, Joseph JaJa, and Amitabh Varshney.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="SparseTalk: Sparsifying 3D Gaussian Language Fields">
+  <meta property="og:description" content="Question-independent sparsification of 3D Gaussian language fields for efficient 3D visual question answering.">
+  <meta property="og:type" content="website">
+  <title>SparseTalk: Sparsifying 3D Gaussian Language Fields for Efficient 3D Visual Question Answering</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%233273dc'/%3E%3Cg fill='white'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Ccircle cx='27' cy='10' r='2'/%3E%3Ccircle cx='20' cy='22' r='4'/%3E%3Ccircle cx='10' cy='29' r='2'/%3E%3Ccircle cx='30' cy='29' r='3'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <header class="paper-header container">
+      <h1 id="paper-title">SparseTalk: Sparsifying 3D Gaussian Language Fields for Efficient 3D Visual Question Answering</h1>
+      <div class="authors"><a href="mailto:dsoselia@umd.edu">Davit Soselia</a><a href="mailto:josephj@umd.edu">Joseph JaJa</a><a href="mailto:varshney@umd.edu">Amitabh Varshney</a></div>
+      <p class="affiliation">University of Maryland, College Park</p>
+      <div class="paper-links">
+        <a class="resource-link" href="https://arxiv.org/abs/2609.15137" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h6l4 4v12H5zM11 2v4h4M8 10h4M8 13h4"/></svg>arXiv</a>
+        <button class="resource-link" id="github-link" type="button" aria-label="GitHub repository, coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="github-path" d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.14.68-3.8-1.34-3.8-1.34-.51-1.3-1.25-1.65-1.25-1.65-1.03-.71.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1.01 1.73 2.64 1.23 3.29.94.1-.73.4-1.23.72-1.51-2.5-.29-5.13-1.25-5.13-5.54 0-1.22.44-2.22 1.15-3-.11-.28-.5-1.42.11-2.95 0 0 .94-.3 3.08 1.15a10.8 10.8 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.61 1.53.22 2.67.11 2.95.71.78 1.15 1.78 1.15 3 0 4.3-2.64 5.25-5.15 5.53.41.35.77 1.04.77 2.09v3.21c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg>GitHub <span id="github-status">(coming soon)</span></button>
+      </div>
+      <p id="notification" class="notification" role="status" aria-live="polite"></p>
+    </header>
+
+    <section class="scene-section container" aria-label="Object-based semantic embedding selections">
+      <div class="scene-toolbar"><span>Retained embeddings:</span><div class="token-controls" role="group" aria-label="Number of retained semantic embeddings"><button type="button" data-budget="8" aria-pressed="false">8</button><button type="button" data-budget="32" aria-pressed="false">32</button><button type="button" data-budget="128" aria-pressed="true">128</button><button type="button" data-budget="729" aria-pressed="false">729</button></div></div>
+      <div class="scene-grid">
+        <figure class="scene-card"><button type="button" class="figure-zoom scene-zoom" data-zoom="assets/classroom-128.webp" data-caption="Classroom: 128 selected semantic embeddings" aria-label="Enlarge the classroom scene"><img id="scene-classroom" src="assets/classroom-128.webp" alt="Classroom Gaussian reconstruction with 128 selected semantic embeddings marked in blue and gray" width="566" height="455" fetchpriority="high"></button><figcaption>Classroom</figcaption></figure>
+        <figure class="scene-card"><button type="button" class="figure-zoom scene-zoom" data-zoom="assets/office-128.webp" data-caption="Office: 128 selected semantic embeddings" aria-label="Enlarge the office scene"><img id="scene-office" src="assets/office-128.webp" alt="Office Gaussian reconstruction with 128 selected semantic embeddings marked in blue and gray" width="566" height="465" fetchpriority="high"></button><figcaption>Office</figcaption></figure>
+        <figure class="scene-card"><button type="button" class="figure-zoom scene-zoom" data-zoom="assets/conference-128.webp" data-caption="Conference room: 128 selected semantic embeddings" aria-label="Enlarge the conference room scene"><img id="scene-conference" src="assets/conference-128.webp" alt="Conference room Gaussian reconstruction with 128 selected semantic embeddings marked in blue and gray" width="566" height="465" fetchpriority="high"></button><figcaption>Conference room</figcaption></figure>
+      </div>
+      <p class="figure-caption"><span id="budget-caption" aria-live="polite">Object-based selection with 128 embeddings per scene.</span> Blue denotes foreground objects; gray denotes background. Geometry and appearance are unchanged.</p>
+    </section>
+
+    <section class="text-section container" id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <p>3D Gaussian language fields provide an explicit, spatially grounded representation for 3D visual question answering (VQA), but their dense semantic features can require tens of thousands of embeddings per scene, resulting in substantial storage, memory, and inference costs. We investigate how much of this representation is actually necessary for downstream reasoning. Starting from a full embedding representation, we systematically sparsify its semantic embeddings, including the previously underexplored regime below a single image-equivalent block down to 8 visual tokens. We compare random, geometric, semantic, and joint spatial-semantic selection strategies and introduce an object-based sparsification method that distributes the token budget across detected object instances while retaining background context. Experiments on ScanQA and MV-ScanQA reveal substantial redundancy in dense Gaussian language fields. Strong VQA performance is retained with only a few hundred semantic embeddings, corresponding to less than 1% of the original representation. Object-based selection performs well relative to others, with only modest observed changes down to 256 tokens. At this budget, SparseTalk retains 0.80% of SplatTalk’s 32,076-token inference input and 0.332% of the mean 77,207-Gaussian dense field, increasing inference throughput while reducing decoded-feature memory 125-fold.</p>
+    </section>
+
+    <section class="figure-section container" id="method" aria-labelledby="method-title">
+      <h2 id="method-title">Method</h2>
+      <figure class="paper-figure"><button type="button" class="figure-zoom" data-zoom="assets/method.webp" data-caption="Object-based Gaussian sparsification" aria-label="Enlarge the object-based sparsification pipeline"><img src="assets/method.webp" alt="Pipeline: posed RGB views, detection with Florence-2 and SAM 2.1, 3D association, object-stratified ranking with a background pool, and VQA using k decoded tokens" width="2200" height="717" loading="lazy"></button><figcaption class="figure-caption">Florence-2 and SAM 2.1 produce per-view instance masks. Gaussian contributions associate detections across views into object tracks. Foreground tracks and a shared background pool form a question-independent ranking, with 30% of the scheduling weight assigned to background. The first <em>k</em> features are decoded into <em>k</em> visual tokens for VQA. Click the figure to enlarge.</figcaption></figure>
+    </section>
+
+    <section class="figure-section container" id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <div class="results-tabs" role="tablist" aria-label="Evaluation dataset"><button type="button" id="tab-scanqa" role="tab" data-dataset="scanqa" aria-selected="true" aria-controls="panel-scanqa">ScanQA</button><button type="button" id="tab-mvscanqa" role="tab" data-dataset="mvscanqa" aria-selected="false" aria-controls="panel-mvscanqa" tabindex="-1">MV-ScanQA</button></div>
+      <div id="panel-scanqa" role="tabpanel" aria-labelledby="tab-scanqa"><figure class="paper-figure"><button type="button" class="figure-zoom" data-zoom="assets/scanqa-results.webp" data-caption="ScanQA: answer quality from 8 to 729 retained tokens" aria-label="Enlarge the ScanQA result plots"><img src="assets/scanqa-results.webp" alt="Six ScanQA answer-quality plots comparing object-based selection, uniform random, semantic k-center, joint k-center, and entropy top-k across 8 to 729 tokens, with full-context and blind baselines" width="2000" height="1245" loading="lazy"></button><figcaption class="figure-caption">Post-hoc sparsification on ScanQA (4,675 questions, 71 scenes). Object-based selection shows modest changes from 729 to 256 embeddings. SplatTalk-32k denotes the original 32,076-token inference input; Blind uses no visual tokens. Click the plots to enlarge.</figcaption></figure></div>
+      <div id="panel-mvscanqa" role="tabpanel" aria-labelledby="tab-mvscanqa" hidden><figure class="paper-figure"><button type="button" class="figure-zoom" data-zoom="assets/mvscanqa-results.webp" data-caption="MV-ScanQA: answer quality from 8 to 729 retained tokens" aria-label="Enlarge the MV-ScanQA result plots"><img src="assets/mvscanqa-results.webp" alt="Six MV-ScanQA answer-quality plots comparing sparsification strategies from 8 to 729 tokens, with full-context and blind baselines" width="2000" height="1245" loading="lazy"></button><figcaption class="figure-caption">Evaluation on MV-ScanQA (2,230 questions, 66 scenes), without additional fine-tuning. Object-based EM@1-R stays within 0.1 points from 729 to 256 embeddings. SplatTalk-32k denotes the original inference input; Blind uses no visual tokens. Click the plots to enlarge.</figcaption></figure></div>
+    </section>
+
+    <section class="citation-section container" id="citation" aria-labelledby="citation-title">
+      <h2 id="citation-title">BibTeX</h2>
+      <div class="citation-box"><button type="button" id="copy-citation"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="6" width="9" height="11" rx="1.5"/><path d="M12 6V3H3v10h4"/></svg><span>Copy citation</span></button><pre><code id="bibtex">@article{soselia2026sparsetalk,
+  title   = {SparseTalk - Sparsifying 3D Gaussian Language
+             Fields for Efficient 3D Visual Question Answering},
+  author  = {Soselia, Davit and JaJa, Joseph and
+             Varshney, Amitabh},
+  journal = {arXiv preprint arXiv:2609.15137},
+  year    = {2026},
+  eprint  = {2609.15137},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url     = {https://arxiv.org/abs/2609.15137}
+}</code></pre></div>
+    </section>
+  </main>
+  <footer class="site-footer container"><a href="https://arxiv.org/abs/2609.15137" target="_blank" rel="noopener noreferrer">SparseTalk · arXiv:2609.15137</a></footer>
+  <dialog id="figure-dialog" aria-labelledby="dialog-caption"><div class="dialog-top"><p id="dialog-caption"></p><button type="button" id="close-dialog" aria-label="Close enlarged figure"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button></div><img id="dialog-image" alt=""></dialog>
+</body>
+</html>
