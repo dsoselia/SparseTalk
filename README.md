@@ -27,7 +27,7 @@ Upload the contents of this directory to a repository. In **Settings → Pages**
 - `script.js`: paper-selection controls, dataset tabs, figure enlargement, citation copying, and the GitHub button.
 - `assets/`: figures for the classroom, office, and conference scenes at 8, 32, 128, and 729 tokens, plus method and results plots.
 
-The scene panel lets you switch embedding budgets (8, 32, 128, 729 tokens) and enlarge any scene.
+The scene panel lets you switch embedding budgets (8, 32, 128, 729 tokens).
 
 ## Design references
 

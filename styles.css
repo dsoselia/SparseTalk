@@ -34,7 +34,7 @@ h1{max-width:960px;margin-inline:auto;font-size:40px;font-weight:600;line-height
 .token-controls button:hover{background:#f6f6f6}
 .token-controls button[aria-pressed=true]{border-color:var(--link);color:var(--link);background:#f0f5fd}
 .scene-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.scene-card img{width:100%;aspect-ratio:1.21;object-fit:cover}
+.scene-card img{width:100%;height:auto}
 .scene-card figcaption{text-align:center;font-size:15px;margin-top:9px}
 .figure-caption{font-size:15px;line-height:1.7;color:var(--muted);margin-top:19px;text-align:left}
 h2{font-size:29px;font-weight:600;line-height:1.3;text-align:center;margin-bottom:25px;letter-spacing:-.5px}
@@ -43,7 +43,6 @@ h2{font-size:29px;font-weight:600;line-height:1.3;text-align:center;margin-botto
 .text-section p{font-size:16px;line-height:1.85;text-align:justify}
 .figure-zoom{display:block;border:0;padding:0;background:white;width:100%;cursor:zoom-in}
 .figure-zoom img{width:100%;height:auto}
-.scene-zoom img{aspect-ratio:1.21;object-fit:cover}
 .results-tabs{display:flex;justify-content:center;gap:28px;margin:0 0 25px;border-bottom:1px solid var(--line)}
 .results-tabs button{color:var(--muted);border:0;border-bottom:2px solid transparent;background:#fff;padding:9px 13px;margin-bottom:-1px;font-size:17px}
 .results-tabs button:hover{color:var(--link)}
@@ -75,7 +74,6 @@ body:has(dialog[open]){overflow:hidden}
   .figure-caption{font-size:14px}
   .text-section p{text-align:left;line-height:1.8}
   dialog img{max-width:none;width:900px}
-  dialog img.scene-detail{width:100%;max-width:100%}
   .dialog-top{position:sticky;top:0;left:0;z-index:1;padding-bottom:8px}
 }
 @media(max-width:520px){
@@ -92,7 +90,7 @@ body:has(dialog[open]){overflow:hidden}
   .token-controls button{min-width:40px;padding:5px 9px;font-size:14px}
   .scene-grid{grid-template-columns:1fr;gap:16px}
   .scene-card{display:grid;grid-template-columns:80px minmax(0,1fr);gap:14px;align-items:center}
-  .scene-card .figure-zoom{grid-column:2}
+  .scene-card img{grid-column:2}
   .scene-card figcaption{grid-column:1;grid-row:1;text-align:left;font-size:14px;margin:0}
   .figure-caption{margin-top:17px}
   h2{font-size:25px;margin-bottom:21px}

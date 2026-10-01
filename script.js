@@ -29,9 +29,6 @@ document.querySelectorAll('[data-budget]').forEach(button => {
       const image = document.querySelector(`#scene-${scene}`);
       image.src = `assets/${scene}-${budget}.webp`;
       image.alt = `${label} Gaussian reconstruction with ${budget} selected semantic embeddings marked in blue and gray`;
-      const zoomButton = image.closest('[data-zoom]');
-      zoomButton.dataset.zoom = image.getAttribute('src');
-      zoomButton.dataset.caption = `${label}: ${budget} selected semantic embeddings`;
     }
     document.querySelector('#budget-caption').textContent = `Object-based selection with ${budget} embeddings per scene.`;
   });
@@ -85,7 +82,6 @@ document.querySelectorAll('[data-zoom]').forEach(button => {
     const image = document.querySelector('#dialog-image');
     image.src = button.dataset.zoom;
     image.alt = button.querySelector('img').alt;
-    image.classList.toggle('scene-detail', button.classList.contains('scene-zoom'));
     document.querySelector('#dialog-caption').textContent = button.dataset.caption;
     figureDialog.showModal();
   });
