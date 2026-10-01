@@ -1,5 +1,4 @@
-// Add the public repository URL here when the code is released.
-const GITHUB_URL = '';
+const GITHUB_URL = 'https://github.com/dsoselia/SparseTalkPublic';
 
 const notification = document.querySelector('#notification');
 let notificationTimeout;
@@ -17,7 +16,7 @@ if (GITHUB_URL) {
 }
 githubButton.addEventListener('click', () => {
   if (GITHUB_URL) window.open(GITHUB_URL, '_blank', 'noopener,noreferrer');
-  else notify('The code repository is coming soon. Its link will appear here.');
+  else notify('Code coming soon.');
 });
 
 document.querySelectorAll('[data-budget]').forEach(button => {
