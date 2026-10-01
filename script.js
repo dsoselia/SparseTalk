@@ -1,4 +1,5 @@
 const GITHUB_URL = 'https://github.com/dsoselia/SparseTalkPublic';
+const SCENE_ASSET_VERSION = '3';
 
 const notification = document.querySelector('#notification');
 let notificationTimeout;
@@ -27,7 +28,7 @@ document.querySelectorAll('[data-budget]').forEach(button => {
     });
     for (const [scene, label] of [['classroom', 'Classroom'], ['office', 'Office'], ['conference', 'Conference room']]) {
       const image = document.querySelector(`#scene-${scene}`);
-      image.src = `assets/${scene}-${budget}.webp`;
+      image.src = `assets/${scene}-${budget}.webp?v=${SCENE_ASSET_VERSION}`;
       image.alt = `${label} Gaussian reconstruction with ${budget} selected semantic embeddings marked in blue and gray`;
     }
     document.querySelector('#budget-caption').textContent = `Object-based selection with ${budget} embeddings per scene.`;
@@ -100,7 +101,7 @@ window.addEventListener('load', () => {
     for (const scene of ['classroom', 'office', 'conference']) {
       for (const budget of [8, 32, 729]) {
         const image = new Image();
-        image.src = `assets/${scene}-${budget}.webp`;
+        image.src = `assets/${scene}-${budget}.webp?v=${SCENE_ASSET_VERSION}`;
       }
     }
   };
